@@ -7,6 +7,8 @@ from .controller import date_range_picker
 import plotly.graph_objects as go
 from io import StringIO
 
+import geopandas as gpd
+
 import pandas as pd
 
 template_graph = {
@@ -46,14 +48,14 @@ graphs = html.Div(
 # TODO adicinar um filtro aninhado (chaincallback) para agrupar o tempo (D, M, Y)
 @callback(
     Output("grafico-dia", "figure"),
-    Input("seia-asv", "data"),
+    Input("seia-asv_", "data"),
 )
 def update_output_grafico_dia(dados):
     """
     Grafico de atualização de dados do dia
     """
     dff = pd.read_json(dados)
-
+    print(dff)
     data_day = go.Bar(
         x=dff.index,
         y=dff["Conced_area_tot_supres_ha"],

@@ -1,4 +1,4 @@
-seia_sql = """SELECT * 
+seia_sql_geom = """SELECT * 
 FROM (
 	SELECT DISTINCT  
 		pa.ide_processo_ato 
@@ -106,7 +106,7 @@ FROM (
 	AND ct.ide_status_fluxo IN (2) -- Considerar 'ConcluÃ­do' (2)? e 'Arquivado' (10) ou 'Cancelado' (17)?
 	AND aa.ide_ato_ambiental IN (12,16) -- Considerar 'ASV' (12) e AMPF (16); e 'ARTA' (14)?
 	AND tspa.nom_tipo_status_processo_ato IN ('Deferido','Transferido') -- Considerar 'Deferidos' (2) e 'Transferidos' (7)
-	AND (p2.dtc_publicacao_portaria >= '2018-01-01' AND p2.dtc_publicacao_portaria < '2050-12-31')
+	AND (p2.dtc_publicacao_portaria >= '2024-01-01' AND p2.dtc_publicacao_portaria < '2024-12-31')
 	ORDER BY p2.dtc_publicacao_portaria DESC, r.num_requerimento ASC
 ) AS t
 WHERE geom NOTNULL AND ST_GeometryType(geom) <> 'ST_Point';"""

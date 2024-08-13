@@ -1,14 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from ...settings import Settings
-
+from dash_inema_asv.settings import Settings
 
 class DBConnectionHandler:
     def __init__(self) -> None:
-        self.__connection_string = Settings.DATABASE_URL
-        # self.__connection_string = (
-        #     f"postgresql+psycopg://postgres:123456@172.16.0.20:5432/seia_producao"
-        # )
+        self.__connection_string = Settings().DATABASE_URL
         self.__engine = self.__create_database_engine()
         self.session = None
 

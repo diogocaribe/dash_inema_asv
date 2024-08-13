@@ -3,7 +3,7 @@ from datetime import date
 
 seia_asv_repository = SeiaAsvRepository()
 
-seia_asv = seia_asv_repository.df_select_all()
+seia_asv = seia_asv_repository.gdf_select_all()
 seia_asv['dtc_prazo_validade'] = seia_asv['dtc_prazo_validade'].astype(str)
 
 # Datas iniciais e finais do dataframe

@@ -7,7 +7,7 @@ from flask import Flask
 
 
 # css para deixar o layout bonito
-external_stylesheets = [dbc.themes.BOOTSTRAP]
+external_stylesheets = [dbc.themes.MATERIA]
 
 server = Flask(__name__)
 app = dash.Dash(server=server, external_stylesheets=external_stylesheets)
