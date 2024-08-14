@@ -20,3 +20,9 @@ cd dash_inema_asv
 # Executando a aplicação em modo debug
 python index.py
 ```
+
+# Perguntas para responder:
+
+## Quantidade de asv concedida calculado pelo polígono gravado no SEIA no tempo?
+
+## Qual a diferença entre a área concedida e a área calcula a partir dos poligonos gravados no SEIA no tempo?
