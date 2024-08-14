@@ -24,7 +24,6 @@ app.layout = [
     dbc.Container(
         [
             dcc.Store(id="seia-asv"),
-            dcc.Store(id="seia-asv_"),
             dbc.Row([header.header]),  # 5vh
             dbc.Row(  # 92vh
                 [
@@ -50,26 +49,6 @@ app.layout = [
     Input("date-picker-range", "value"),
 )
 def filter_seia_asv_geom(dates):
-    """
-    Metodo que filtra os dados e retorna para os callbacks.
-    """
-
-    start_date = dates[0]
-    end_date = dates[1]
-
-    date1 = datetime.strptime(start_date, "%Y-%m-%d").date()
-    date2 = datetime.strptime(end_date, "%Y-%m-%d").date()
-
-    dff = seia_asv.query("@date1 <= index <= @date2")
-    
-    return dff.to_json()
-
-
-@app.callback(
-    Output("seia-asv_", "data"),
-    Input("date-picker-range", "value"),
-)
-def filter_seia_asv(dates):
     """
     Metodo que filtra os dados e retorna para os callbacks.
     """

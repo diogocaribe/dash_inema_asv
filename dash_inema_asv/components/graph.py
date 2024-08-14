@@ -1,11 +1,11 @@
 """Barra de graficos."""
 
+import json
 from dash import dcc, html, Input, Output, callback
 import numpy as np
 import plotly.express as px
 from .controller import date_range_picker
 import plotly.graph_objects as go
-from io import StringIO
 
 import geopandas as gpd
 
@@ -48,18 +48,20 @@ graphs = html.Div(
 # TODO adicinar um filtro aninhado (chaincallback) para agrupar o tempo (D, M, Y)
 @callback(
     Output("grafico-dia", "figure"),
-    Input("seia-asv_", "data"),
+    Input("seia-asv", "data"),
 )
 def update_output_grafico_dia(dados):
     """
     Grafico de atualização de dados do dia
     """
-    dff = pd.read_json(dados)
-    print(dff)
+    data_json = json.loads(dados)
+
+    dff = gpd.GeoDataFrame.from_features(data_json)
+    print(dff.head())
     data_day = go.Bar(
-        x=dff.index,
-        y=dff["Conced_area_tot_supres_ha"],
-        customdata=np.stack(dff["nom_municipio"], axis=-1),
+        x=dff,
+        y=dff["area_ha_concedida"],
+        # customdata=np.stack(dff["numero_processo"], axis=-1),
     )
     layout = go.Layout(
         title="<b>Evolução diária do desmatamento</b>",
