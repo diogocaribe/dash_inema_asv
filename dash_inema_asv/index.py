@@ -20,7 +20,7 @@ app.layout = [
     dbc.Container(
         [
             dcc.Store(id="seia-asv"),
-            dbc.Row([header.header]),  # 5vh
+            dbc.Row([header.header]),
             dbc.Row(  # 92vh
                 [
                     dbc.Col([map_.map_], width=7),
