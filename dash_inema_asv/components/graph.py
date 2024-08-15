@@ -4,7 +4,7 @@ import json
 from dash import dcc, html, Input, Output, callback
 import numpy as np
 import plotly.express as px
-from .controller import date_range_picker
+from .controller_datapicker import date_range_picker
 import plotly.graph_objects as go
 
 import geopandas as gpd

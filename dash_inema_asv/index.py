@@ -9,7 +9,7 @@ import pandas as pd
 from app import app
 
 
-from components import footer, header, map_, graph
+from components import header, map_, graph, controller_filter
 from dataset.data import seia_asv
 from utils import filtrando_dataframe
 
@@ -21,6 +21,7 @@ app.layout = [
         [
             dcc.Store(id="seia-asv"),
             dbc.Row([header.header]),
+            dbc.Row([controller_filter.controller_filter]),
             dbc.Row(  # 92vh
                 [
                     dbc.Col([map_.map_], width=7),
@@ -31,7 +32,7 @@ app.layout = [
                     ),
                 ]
             ),
-            dbc.Row([footer.footer]),  # 92vh
+            # dbc.Row([footer.footer]),  # 92vh
         ],
         class_name="overflow-hidden",
         fluid=True,

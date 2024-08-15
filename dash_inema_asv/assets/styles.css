@@ -1,0 +1,11 @@
+/* assets/style.css */
+
+/* Estilizar a seta do dropdown */
+.Select-indicator {
+    color: white !important; /* Cor da seta */
+}
+
+/* Estilizar a seta do dropdown quando expandida */
+.Select-arrow-zone {
+    color: white !important; /* Cor da seta quando expandida */
+}
