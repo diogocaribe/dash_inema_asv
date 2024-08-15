@@ -33,6 +33,8 @@ app.layout = [
                 ]
             ),
             # dbc.Row([footer.footer]),  # 92vh
+            html.Div(id="dd-output-container"),
+            html.Div(id="output-container-date-picker-range"),
         ],
         class_name="overflow-hidden",
         fluid=True,

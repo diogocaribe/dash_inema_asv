@@ -18,15 +18,17 @@ controller_filter = html.Div(
             ],
             style={"width": "161.72px", "height": "52px"},
         ),
-        html.Div(id="dd-output-container"),
-        dcc.DatePickerRange(
-            id="my-date-picker-range",
-            min_date_allowed=date(1995, 8, 5),
-            max_date_allowed=date(2017, 9, 19),
-            initial_visible_month=date(2017, 8, 5),
-            end_date=date(2017, 8, 25),
-        ),
-        html.Div(id="output-container-date-picker-range"),
+        html.Div([
+            html.P('Selecione o intervalo temporal:', style={"margin": "0", "color": "#FFFFFF"}),
+            dcc.DatePickerRange(
+                id="my-date-picker-range",
+                min_date_allowed=date(1995, 8, 5),
+                max_date_allowed=date(2017, 9, 19),
+                initial_visible_month=date(2017, 8, 5),
+                end_date=date(2017, 8, 25),
+                style={"width": "322.46px", "height": "32px"}
+            ),
+        ],style={"width": "322.46px", "height": "52px"})
     ],
     id="controller_filter",
     style={
