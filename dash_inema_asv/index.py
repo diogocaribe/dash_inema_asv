@@ -35,6 +35,7 @@ app.layout = [
         ],
         class_name="overflow-hidden",
         fluid=True,
+        style={'width': '1440px', 'height': '2115px', 'top': '-279px', 'left': '-773px'},
     )
 ]
 
