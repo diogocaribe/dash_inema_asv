@@ -62,10 +62,10 @@ def update_output_grafico_dia(dados):
     data_day = go.Bar(
         x=dff.data_portaria,
         y=dff["area_ha_concedida"],
-        # customdata=np.stack(dff["numero_processo"], axis=-1),
+        customdata=np.stack(dff["numero_processo"], axis=-1),
     )
     layout = go.Layout(
-        title="<b>Evolução diária do desmatamento</b>",
+        title="<b>ASV</b>",
         xaxis={"title": "Data"},
         yaxis={"title": "Área (ha)"},
     )
@@ -75,7 +75,7 @@ def update_output_grafico_dia(dados):
     grafico_dia.update_layout(template=template_graph)
     grafico_dia.update_yaxes(fixedrange=False)
     grafico_dia.update_traces(
-        hovertemplate="""Município: %{customdata}<br>Data: %{x}<br>Área (ha): %{value:.2f}<extra></extra>"""
+        hovertemplate="""Número do processo: %{customdata}<br>Data: %{x}<br>Área concedida (ha): %{value:.2f}<extra></extra>"""
     )
 
     return grafico_dia
