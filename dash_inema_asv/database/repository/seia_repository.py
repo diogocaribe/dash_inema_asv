@@ -20,7 +20,7 @@ class SeiaAsvRepository:
                     sql=seia_sql_geom,
                     con=db.get_engine(),
                     geom_col='geom', crs=4674,
-                    index_col=["data_publicacao"],
+                    # index_col=["gid"],
                 )
                 return data
             except Exception as exception:

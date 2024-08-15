@@ -8,14 +8,10 @@ import pandas as pd
 
 from app import app
 
-import sys
-import os
-
-# Adiciona o diretório raiz ao sys.path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from components import footer, header, map_, graph
 from dataset.data import seia_asv
+from utils import filtrando_dataframe
 
 server = app.server
 
@@ -56,11 +52,9 @@ def filter_seia_asv_geom(dates):
     start_date = dates[0]
     end_date = dates[1]
 
-    date1 = datetime.strptime(start_date, "%Y-%m-%d").date()
-    date2 = datetime.strptime(end_date, "%Y-%m-%d").date()
+    dff = filtrando_dataframe(inicio=start_date, fim=end_date, coluna_data='data_portaria', df=seia_asv)
+    dff['data_portaria'] = dff['data_portaria'].astype('string')
 
-    dff = seia_asv.query("@date1 <= index <= @date2")
-    
     return dff.to_json()
 
 if __name__ == "__main__":
