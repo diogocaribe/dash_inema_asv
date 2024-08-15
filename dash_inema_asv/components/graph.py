@@ -58,7 +58,7 @@ def update_output_grafico_dia(dados):
 
     dff = gpd.GeoDataFrame.from_features(data_json)
     print(dff.head())
-        
+
     data_day = go.Bar(
         x=dff.data_portaria,
         y=dff["area_ha_concedida"],

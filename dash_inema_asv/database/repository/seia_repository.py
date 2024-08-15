@@ -19,13 +19,14 @@ class SeiaAsvRepository:
                 data = gpd.GeoDataFrame.from_postgis(
                     sql=seia_sql_geom,
                     con=db.get_engine(),
-                    geom_col='geom', crs=4674,
+                    geom_col="geom",
+                    crs=4674,
                     # index_col=["gid"],
                 )
                 return data
             except Exception as exception:
                 raise exception
-    
+
     def df_select_all(self):
         """
         :param engine: SQLAlchemy database connection engine

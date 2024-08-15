@@ -1,4 +1,5 @@
 """Controllers"""
+
 import dash_mantine_components as dmc
 from dataset.data import max_date, min_date, year_start
 

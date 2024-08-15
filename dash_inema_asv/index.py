@@ -52,10 +52,13 @@ def filter_seia_asv_geom(dates):
     start_date = dates[0]
     end_date = dates[1]
 
-    dff = filtrando_dataframe(inicio=start_date, fim=end_date, coluna_data='data_portaria', df=seia_asv)
-    dff['data_portaria'] = dff['data_portaria'].astype('string')
+    dff = filtrando_dataframe(
+        inicio=start_date, fim=end_date, coluna_data="data_portaria", df=seia_asv
+    )
+    dff["data_portaria"] = dff["data_portaria"].astype("string")
 
     return dff.to_json()
+
 
 if __name__ == "__main__":
     app.run_server(debug=True)

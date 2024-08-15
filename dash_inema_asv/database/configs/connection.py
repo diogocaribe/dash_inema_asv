@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from dash_inema_asv.settings import Settings
 
+
 class DBConnectionHandler:
     def __init__(self) -> None:
         self.__connection_string = Settings().DATABASE_URL
