@@ -1,3 +1,4 @@
+# TODO Verificar se precisaremos adicionar o status do ato na consulta (deferido e transferido)
 seia_sql_geom = """SELECT (select unnest(array_agg(gid)) as id_array2 order by id_array2 limit 1) AS gid
 	, area_ha_concedida
 	, ROUND(sum(area_ha_concedida_geom)::NUMERIC, 4) area_ha_concedida_geom

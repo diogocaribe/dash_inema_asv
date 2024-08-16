@@ -10,8 +10,15 @@ map_ = dl.Map(
     zoom=6,
     preferCanvas=True,
     maxBounds=[[-8.5272, -46.6294], [-18.3484, -37.3338]],
-    id="leaflet-map",
-    style={"height": "92vh"},
+    id='leaflet-map',
+    style={
+        'width': '517.72px',
+        'height': '575.92px',
+        'left': '906px',
+        'border-radius': '4px',
+        'border': '1px',
+        'padding': '0px'
+    },
 )
 
 map_ = dbc.Row([map_])
@@ -19,8 +26,8 @@ map_ = dbc.Row([map_])
 
 # Callback mapa
 @callback(
-    Output("geojson-mapa", "children"),
-    Input("seia-asv", "data"),
+    Output('geojson-mapa', 'children'),
+    Input('seia-asv', 'data'),
 )
 def update_output_mapa(gdf):
     """

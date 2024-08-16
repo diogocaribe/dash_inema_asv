@@ -24,11 +24,9 @@ app.layout = [
             dbc.Row([controller_filter.controller_filter]),
             dbc.Row(  # 92vh
                 [
-                    dbc.Col([map_.map_], width=7),
+                    dbc.Col([map_.map_], width=7, style={'position': 'absolute'}),
                     dbc.Col(
-                        [graph.graphs],
-                        width=5,
-                        style={"overflow-y": "scroll", "height": "92vh"},
+                        [graph.graphs], width=5,
                     ),
                 ]
             ),
