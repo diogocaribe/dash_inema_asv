@@ -12,8 +12,13 @@ controller_filter = html.Div(
                     ["NYC", "MTL", "SF"],
                     placeholder="Selecione",
                     id="demo-dropdown",
-                    style={"width": "161.23px", "height": "32px", "backgroundColor": "#C7C6C6", 'borderRadius': '3px', 'border': '0.5px solid #C7C6C63'},
-
+                    style={
+                        "width": "161.23px",
+                        "height": "32px",
+                        "backgroundColor": "#C7C6C6",
+                        "borderRadius": "3px",
+                        "border": "0.5px solid #C7C6C63",
+                    },
                 ),
             ],
             style={"width": "161.72px", "height": "52px"},

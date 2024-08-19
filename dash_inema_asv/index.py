@@ -9,7 +9,7 @@ import pandas as pd
 from app import app
 
 
-from components import header, map_, graph, controller_filter
+from components import header, map_, graph, controller_filter, controller_datapicker
 from dataset.data import seia_asv
 from utils import filtrando_dataframe
 
@@ -21,11 +21,18 @@ app.layout = [
         [
             dcc.Store(id="seia-asv"),
             dbc.Row([header.header]),
-            dbc.Row([controller_filter.controller_filter]),
+            dbc.Row([
+                html.Div([
+                    controller_filter.controller_filter,
+                    controller_datapicker.date_range_picker
+                ], style={'padding': '0px',  'display': 'flex'}
+                )
+            ]),
             dbc.Row(
                 [
-                    dbc.Col([graph.graphs], width=5),
-                    dbc.Col([map_.map_], width=7),
+                    dbc.Col([graph.graphs], width=4),
+                    dbc.Col([], width=2),
+                    dbc.Col([map_.map_], width=5),
                 ]
             ),
             # dbc.Row([footer.footer]),

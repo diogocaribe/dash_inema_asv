@@ -6,7 +6,7 @@ import json
 
 map_ = html.Div(
     [
-        html.P("Mapa de Monitoramento", className="titulo-box"),
+        html.P("Mapa de Monitoramento", className="titulo-box", style={"padding-bottom": "16px"}),
         dl.Map(
             [dl.TileLayer(), dl.GeoJSON(id="geojson-mapa")],
             center=[56, 10],
@@ -24,7 +24,7 @@ map_ = html.Div(
     style={
         "width": "517.72px",
         "height": "575.92px",
-        "padding": "16px 0px 0px 13px",
+        "padding": "16px 16px 0px 16px",
     },
 )
 
