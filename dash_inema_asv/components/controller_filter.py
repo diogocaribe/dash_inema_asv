@@ -28,12 +28,10 @@ controller_filter = html.Div(
     style={
         "width": "1440px",
         "height": "84px",
-        "top": "42px",
         "background": "#1F2D4D",
         "display": "flex",
         "justifyContent": "center",
         "alignItems": "center",
-        "gap": "20px",
     },
 )
 
