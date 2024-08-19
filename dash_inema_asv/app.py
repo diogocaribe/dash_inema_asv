@@ -12,7 +12,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # css para deixar o layout bonito
-external_stylesheets = [dbc.themes.MATERIA]
+external_stylesheets = [dbc.themes.MATERIA, dbc.themes.BOOTSTRAP]
 
 server = Flask(__name__)
 app = dash.Dash(server=server, external_stylesheets=external_stylesheets)

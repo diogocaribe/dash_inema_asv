@@ -4,20 +4,27 @@ from dash import Input, Output, callback, dcc, html
 import json
 
 
-map_ = dl.Map(
-    [dl.TileLayer(), dl.GeoJSON(id="geojson-mapa")],
-    center=[56, 10],
-    zoom=6,
-    preferCanvas=True,
-    maxBounds=[[-8.5272, -46.6294], [-18.3484, -37.3338]],
-    id='leaflet-map',
+map_ = html.Div(
+    [
+        html.P("Mapa de Monitoramento", className="titulo-box"),
+        dl.Map(
+            [dl.TileLayer(), dl.GeoJSON(id="geojson-mapa")],
+            center=[56, 10],
+            zoom=6,
+            preferCanvas=True,
+            maxBounds=[[-8.5272, -46.6294], [-18.3484, -37.3338]],
+            id="leaflet-map",
+            style={
+                "width": "485.72px",
+                "height": "502.92px",
+            },
+        ),
+    ],
+    className="div-map",
     style={
-        'width': '517.72px',
-        'height': '575.92px',
-        'left': '906px',
-        'border-radius': '4px',
-        'border': '1px',
-        'padding': '0px'
+        "width": "517.72px",
+        "height": "575.92px",
+        "padding": "16px 0px 0px 13px",
     },
 )
 
@@ -26,8 +33,8 @@ map_ = dbc.Row([map_])
 
 # Callback mapa
 @callback(
-    Output('geojson-mapa', 'children'),
-    Input('seia-asv', 'data'),
+    Output("geojson-mapa", "children"),
+    Input("seia-asv", "data"),
 )
 def update_output_mapa(gdf):
     """

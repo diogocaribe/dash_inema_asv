@@ -1,5 +1,12 @@
 /* assets/style.css */
 
+/* Meu Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Estilizar a seta do dropdown */
 .Select-indicator {
     color: white !important; /* Cor da seta */
@@ -8,4 +15,43 @@
 /* Estilizar a seta do dropdown quando expandida */
 .Select-arrow-zone {
     color: white !important; /* Cor da seta quando expandida */
+}
+
+/* Define a cor azul transparente para todas as divs */
+.col {
+    padding: 16px;
+}
+
+.div-map {
+    width: 517.72px;
+    height: 575.92px;
+    border-radius: 4px;  
+    border: 1px solid #DFDFDF;
+    background-color: #ffffff;    
+}
+
+.div-box {
+    border-radius: 4px;  
+    border: 1px solid #DFDFDF;
+    background-color: #ffffff;    
+}
+
+
+/* Configuração da div onde esta a tabela */
+.div-table {
+    width: 829px;
+    border-radius: 4px;
+    border: 1px solid #DFDFDF;
+    background-color: #ffffff;
+    padding: 16px;    
+}
+
+/* Configuração das fontes dos graficos, mapas, tabelas */
+.titulo-box {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+    color: #212227;
+
 }

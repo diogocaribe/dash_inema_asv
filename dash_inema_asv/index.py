@@ -22,15 +22,13 @@ app.layout = [
             dcc.Store(id="seia-asv"),
             dbc.Row([header.header]),
             dbc.Row([controller_filter.controller_filter]),
-            dbc.Row(  # 92vh
+            dbc.Row(
                 [
-                    dbc.Col([map_.map_], width=7, style={'position': 'absolute'}),
-                    dbc.Col(
-                        [graph.graphs], width=5,
-                    ),
+                    dbc.Col([graph.graphs], width=5),
+                    dbc.Col([map_.map_], width=7),
                 ]
             ),
-            # dbc.Row([footer.footer]),  # 92vh
+            # dbc.Row([footer.footer]),
             html.Div(id="dd-output-container"),
             html.Div(id="output-container-date-picker-range"),
         ],
