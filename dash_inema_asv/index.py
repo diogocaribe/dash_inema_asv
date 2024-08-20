@@ -9,7 +9,7 @@ import pandas as pd
 from app import app
 
 
-from components import header, map_, graph, controller_filter, controller_datapicker
+from components import header, map_, graph, controller_filter, controller_datapicker, indicador_geral
 from dataset.data import seia_asv
 from utils import filtrando_dataframe
 
@@ -21,18 +21,52 @@ app.layout = [
         [
             dcc.Store(id="seia-asv"),
             dbc.Row([header.header]),
-            dbc.Row([
-                html.Div([
-                    controller_filter.controller_filter,
-                    controller_datapicker.date_range_picker
-                ], style={'padding': '0px',  'display': 'flex'}
-                )
-            ]),
             dbc.Row(
                 [
-                    dbc.Col([graph.graphs], width=4),
-                    dbc.Col([], width=2),
-                    dbc.Col([map_.map_], width=5),
+                    html.Div(
+                        [
+                            controller_filter.controller_filter,
+                            controller_datapicker.date_range_picker,
+                        ],
+                        style={"padding": "0px", "display": "flex"},
+                    )
+                ]
+            ),
+            dbc.Row(
+                [
+                    dbc.Col(
+                        [indicador_geral.indicador_geral], 
+                        style={
+                            "display": "flex",
+                            "flex-direction": "column",
+                            "align-items": "center",
+                            "justify-content": "center",
+                        },
+                    ),
+                    dbc.Col(
+                        [indicador_geral.indicador_geral],
+                        style={
+                            "display": "flex",
+                            "flex-direction": "column",
+                            "align-items": "center",
+                            "justify-content": "center",
+                        },
+                    ),
+                    dbc.Col(
+                        [map_.map_],
+                        style={
+                            "display": "flex",
+                            "flex-direction": "column",
+                            "align-items": "center",
+                            "justify-content": "center",
+                        },
+                    ),
+                ],
+                className="g-1",
+            ),
+            dbc.Row(
+                [
+                    dbc.Col([graph.graphs]),
                 ]
             ),
             # dbc.Row([footer.footer]),
@@ -41,7 +75,7 @@ app.layout = [
         ],
         class_name="overflow-hidden",
         fluid=True,
-        style={'width': '1440px', 'height': '2115px', 'top': '-279px', 'left': '-773px'},
+        style={"width": "1440px", "height": "2115px"},
     )
 ]
 

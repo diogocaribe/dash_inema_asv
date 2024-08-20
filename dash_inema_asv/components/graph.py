@@ -70,6 +70,28 @@ def update_output_grafico_dia(dados):
     grafico_dia = go.Figure(data=data_day, layout=layout)
 
     grafico_dia.update_layout(template=template_graph)
+    grafico_dia.update_layout(
+        xaxis=dict(
+            rangeselector=dict(
+                buttons=list([
+                    dict(count=1,
+                        label="1m",
+                        step="month",
+                        stepmode="backward"),
+                    dict(count=6,
+                        label="6m",
+                        step="month",
+                        stepmode="backward"),
+                    dict(count=1,
+                        label="YTD",
+                        step="year",
+                        stepmode="todate"),
+                    dict(step="all")
+                ])
+            ),
+            type="date"
+        )
+    )
     grafico_dia.update_yaxes(fixedrange=False)
     grafico_dia.update_traces(
         hovertemplate="""Número do processo: %{customdata}<br>Data: %{x}<br>Área concedida (ha): %{value:.2f}<extra></extra>"""

@@ -1,54 +1,56 @@
-from dash import html, dash_table
-from pandas import DataFrame
+import dash_bootstrap_components as dbc
+from dash import html
 
-def box_indicador_geral(df: DataFrame):
-    """Função para gerar tabela a partir de um pandas Dataframe
 
-    Args:
-        df (DataFrame): Dataframe para criação da tabela
-
-    Returns:
-        _type_: Tabela para o layout
-    """
-
-    box = html.Div([
-        html.P("Processos Asv", className="titulo-box"),
-        dash_table.DataTable(
-            data=df.to_dict("records"),
-            columns=[{"id": c, "name": c} for c in df.columns],
-            # Sort
-            sort_action="native",
-            sort_mode="multi",
-            editable=False,
-            # Style
-            style_as_list_view=True,  # Linhas entre as celulas (sem linhas nas colunas)
-            style_data={
-                "border": "1px solid #DFDFDF",
-                "height": "15px",
-            },  # Estinho da linha entre as celulas
-            style_table={
-                "border": "1px solid #DFDFDF",
-                "height": "483px",
-                "overflowY": "auto",
-                "border-radius": "4px 4px 0px 0px",
-            },  # Borda ao redor da tabela
-            style_header={
-                "backgroundColor": "#F4F4F6",
-                "height": "37px",
-                "whiteSpace": "normal",
-                "position": "sticky",  # Fixa o cabeçalho
-                "top": "0",  # Define a posição do cabeçalho no topo
-                "zIndex": "1",
-            },
-            style_cell={
-                "textAlign": "center",
-                "font-family": "Roboto",
-                "font-size": "12px",
-                "font-weight": 400,
-                "line-height": "13.5px",
-                "letter-spacing": "0.005em",
-            },
+indicador_geral = html.Div(
+    [
+        html.P("Quantitativo Geral", className="titulo-box"),
+        html.Div(
+            [
+                html.P("Indicadores"),
+                html.Hr(style={"width": "397px"}),
+                html.Div(
+                    [
+                        html.Div(
+                            [
+                                html.Div(
+                                    [
+                                        html.P("Àrea Suprimida (ha)"),
+                                        html.Div([html.P(7777, style={})]),
+                                    ]
+                                )
+                            ],
+                            className="div-box",
+                            style={
+                                "width": "190px",
+                                "height": "125px",
+                                "padding": "16px 0px 0px 13px",
+                            },
+                        ),
+                        html.Div(
+                            [html.Div([html.P("Processos"), html.Div([html.P(4500)])])],
+                            className="div-box",
+                            style={
+                                "width": "190px",
+                                "height": "125px",
+                                "padding": "16px 0px 0px 13px",
+                            },
+                        ),
+                    ],
+                    style={
+                        "display": "flex",
+                        "justifyContent": "space-between",
+                        "alignItems": "center",  # Opcional: Alinha verticalmente no centro
+                        "width": "397px",  # Ajusta a largura do container conforme necessário
+                    },
+                ),
+            ]
         ),
-    ], className="div-table")
-
-    return box
+    ], 
+    className="div-box",
+    style={
+        "width": "429px",
+        "height": "248px",
+        "padding": "16px 0px 0px 13px",
+    },
+)
