@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def filtrando_dataframe(inicio: str, fim: str, coluna_data: str, df):
-    """_summary_
+    '''_summary_
 
     Args:
         inicio (str): Data de inicio do filtro
@@ -12,7 +12,7 @@ def filtrando_dataframe(inicio: str, fim: str, coluna_data: str, df):
 
     Returns:
         _type_: Dataframe
-    """
+    '''
     # Filtra o DataFrame pelo intervalo de datas
     filtro = (df[coluna_data] >= inicio) & (df[coluna_data] <= fim)
     df_filtrado = df[filtro]

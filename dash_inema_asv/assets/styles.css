@@ -53,3 +53,43 @@
     line-height: 16px;
     text-align: left;
 }
+
+.titulo-indicador {
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Roboto;
+    line-height: 13.5px;
+    letter-spacing: 0.005em;
+    color: #3D5AFF;
+    padding-top: 16px;
+}
+
+.conteudo-indicador {
+    font-family: Roboto;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0.005em;
+    text-align: center;
+    color: #3D5AFF;
+    
+}
+
+.conteudo-indicador_segundo {
+    font-family: Roboto;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0.005em;
+    text-align: center;
+    color: #04236C;
+    
+}
+
+.box-interno-indicador-geral {
+    width: 190px;
+    height: 125px;
+    padding: 12px;
+    border-radius: 4px;  
+    border: 1px solid #DFDFDF;
+    background-color: #ffffff;
+    margin: 0px;  
+}

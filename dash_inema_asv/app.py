@@ -1,4 +1,4 @@
-"""Dashboard Inema"""
+'''Dashboard Inema'''
 # coding: utf-8
 
 import dash
@@ -16,4 +16,4 @@ external_stylesheets = [dbc.themes.MATERIA, dbc.themes.BOOTSTRAP]
 
 server = Flask(__name__)
 app = dash.Dash(server=server, external_stylesheets=external_stylesheets)
-app.title = "AsvDashboard"
+app.title = 'AsvDashboard'

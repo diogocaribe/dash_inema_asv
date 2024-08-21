@@ -1,4 +1,4 @@
-"""Dashboard InemaS"""
+'''Dashboard InemaS'''
 
 from datetime import datetime
 from dash import html, dcc, callback, Output, Input
@@ -19,7 +19,7 @@ server = app.server
 app.layout = [
     dbc.Container(
         [
-            dcc.Store(id="seia-asv"),
+            dcc.Store(id='seia-asv'),
             dbc.Row([header.header]),
             dbc.Row(
                 [
@@ -28,7 +28,7 @@ app.layout = [
                             controller_filter.controller_filter,
                             controller_datapicker.date_range_picker,
                         ],
-                        style={"padding": "0px", "display": "flex"},
+                        style={'padding': '0px', 'display': 'flex'},
                     )
                 ]
             ),
@@ -37,32 +37,32 @@ app.layout = [
                     dbc.Col(
                         [indicador_geral.indicador_geral], 
                         style={
-                            "display": "flex",
-                            "flex-direction": "column",
-                            "align-items": "center",
-                            "justify-content": "center",
+                            'display': 'flex',
+                            'flex-direction': 'column',
+                            'align-items': 'center',
+                            'justify-content': 'center',
                         },
                     ),
                     dbc.Col(
                         [indicador_geral.indicador_geral],
                         style={
-                            "display": "flex",
-                            "flex-direction": "column",
-                            "align-items": "center",
-                            "justify-content": "center",
+                            'display': 'flex',
+                            'flex-direction': 'column',
+                            'align-items': 'center',
+                            # 'justify-content': 'center',
                         },
                     ),
                     dbc.Col(
                         [map_.map_],
                         style={
-                            "display": "flex",
-                            "flex-direction": "column",
-                            "align-items": "center",
-                            "justify-content": "center",
+                            'display': 'flex',
+                            'flex-direction': 'column',
+                            'align-items': 'center',
+                            'justify-content': 'center',
                         },
                     ),
                 ],
-                className="g-1",
+                className='g-1',
             ),
             dbc.Row(
                 [
@@ -70,36 +70,36 @@ app.layout = [
                 ]
             ),
             # dbc.Row([footer.footer]),
-            html.Div(id="dd-output-container"),
-            html.Div(id="output-container-date-picker-range"),
+            html.Div(id='dd-output-container'),
+            html.Div(id='output-container-date-picker-range'),
         ],
-        class_name="overflow-hidden",
+        class_name='overflow-hidden',
         fluid=True,
-        style={"width": "1440px", "height": "2115px"},
+        style={'width': '1440px', 'height': '2115px'},
     )
 ]
 
 
 # DataStore monitoramento-desmatamento-municipio
 @app.callback(
-    Output("seia-asv", "data"),
-    Input("date-picker-range", "value"),
+    Output('seia-asv', 'data'),
+    Input('date-picker-range', 'value'),
 )
 def filter_seia_asv_geom(dates):
-    """
+    '''
     Metodo que filtra os dados e retorna para os callbacks.
-    """
+    '''
 
     start_date = dates[0]
     end_date = dates[1]
 
     dff = filtrando_dataframe(
-        inicio=start_date, fim=end_date, coluna_data="data_portaria", df=seia_asv
+        inicio=start_date, fim=end_date, coluna_data='data_portaria', df=seia_asv
     )
-    dff["data_portaria"] = dff["data_portaria"].astype("string")
+    dff['data_portaria'] = dff['data_portaria'].astype('string')
 
     return dff.to_json()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run_server(debug=True)
