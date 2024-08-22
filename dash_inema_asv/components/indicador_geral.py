@@ -1,5 +1,7 @@
+import json
 import dash_bootstrap_components as dbc
-from dash import html
+from dash import html, Input, Output, callback
+import geopandas as gpd
 
 
 indicador_geral = html.Div(
@@ -71,3 +73,20 @@ indicador_geral = html.Div(
             "padding": "16px 0px 0px 16px",
         },
     )
+
+indicador_geral_ = html.Div([
+    html.P(id='numero-processo'),
+])
+
+
+@callback(Output('numero-processo', 'children'),
+          Input('seia-asv', 'data'),
+          Input('demo-dropdown', 'value'))
+def update_output_(dados, value):
+    data_json = json.loads(dados)
+
+    dff = gpd.GeoDataFrame.from_features(data_json)
+
+    print(dff.size)
+
+    return f'You have selected {value} {dff.size}'

@@ -1,8 +1,6 @@
 from dash import html, dcc, Output, Input, callback
 from datetime import date
 
-filtro = html.Div([])
-
 controller_filter = html.Div(
     [
         html.Div(

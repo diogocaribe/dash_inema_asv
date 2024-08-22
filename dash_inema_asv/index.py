@@ -35,7 +35,8 @@ app.layout = [
             dbc.Row(
                 [
                     dbc.Col(
-                        [indicador_geral.indicador_geral], 
+                        [indicador_geral.indicador_geral,
+                         indicador_geral.indicador_geral_],
                         style={
                             'display': 'flex',
                             'flex-direction': 'column',
