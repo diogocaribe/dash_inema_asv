@@ -7,7 +7,7 @@ controller_filter = html.Div(
             [
                 html.P('Filtro', style={'margin': '0', 'color': '#FFFFFF'}),
                 dcc.Dropdown(
-                    ['NYC', 'MTL', 'SF'],
+                    ['Barreiras', 'Cocos', 'Correntina'],
                     placeholder='Selecione',
                     id='demo-dropdown',
                     style={
