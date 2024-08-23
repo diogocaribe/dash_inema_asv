@@ -16,7 +16,7 @@ FROM (
 				WHEN sc.srid IN ('31984') THEN st_area(st_transform(dg.the_geom,31984))/10000
 				WHEN sc.srid IN ('29193') THEN st_area(st_transform(dg.the_geom,29193))/10000
 				WHEN sc.srid IN ('29194') THEN st_area(st_transform(dg.the_geom,29194))/10000
-				ELSE st_area(st_transform(dg.the_geom,31983))/10000 -- Conversao considerando menor desvio para UTM 23S (Foco: Cerrado)
+				ELSE st_area(st_transform(dg.the_geom, 31983))/10000 -- Conversao considerando menor desvio para UTM 23S (Foco: Cerrado)
 			  END AS area_ha_concedida_geom
 			, aa.nom_ato_ambiental AS nome_ato_ambiental
 			, p.num_processo AS numero_processo
@@ -33,5 +33,7 @@ FROM (
 	JOIN sistema_coordenada sc ON sc.ide_sistema_coordenada = lg.ide_sistema_coordenada
 	WHERE aa.ide_ato_ambiental = 12 -- 12 é o valor para ASV
 	AND ST_GeometryType(the_geom) <> 'ST_Point' -- Removendo pontos
+	-- Removendo as duplicatas de registro quando o gid e a área concedidada são iguais
+	GROUP BY lg.ide_localizacao_geografica, pac.val_atividade, sc.srid, aa.nom_ato_ambiental, p.num_processo, p2.num_portaria, p2.dtc_portaria, dg.the_geom
 ) t
 GROUP BY area_ha_concedida, nome_ato_ambiental, numero_processo, numero_portaria, data_portaria;'''
