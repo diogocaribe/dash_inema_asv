@@ -10,6 +10,8 @@ import geopandas as gpd
 
 import pandas as pd
 
+from utils import group_by_time
+
 template_graph = {
     'layout': {
         'modebar': {
@@ -29,17 +31,25 @@ template_graph = {
 }
 
 graphs = html.Div(
-    [
-        html.Div(
             [
+                dcc.Dropdown(
+                    ['Dia', 'Mês', 'Ano'],
+                    placeholder='Selecione',
+                    id='dropdown-municipio',
+                    value='Mês',
+                    style={
+                        'width': '161.23px',
+                        'height': '32px',
+                        'backgroundColor': '#C7C6C6',
+                        'borderRadius': '3px',
+                        'border': '0.5px solid #C7C6C63',
+                    },
+                ),
                 dcc.Graph(
                     id='grafico-dia',
                     config={'displaylogo': False, 'scrollZoom': False},
                 ),
-            ]
-        ),
-    ]
-)
+            ])
 
 
 # Callback no grafico de desmatamento diário
@@ -47,8 +57,9 @@ graphs = html.Div(
 @callback(
     Output('grafico-dia', 'figure'),
     Input('seia-asv', 'data'),
+    Input('dropdown-municipio', 'value')
 )
-def update_output_grafico_dia(dados):
+def update_output_grafico_dia(dados, value):
     '''
     Grafico de atualização de dados do dia
     '''
@@ -56,9 +67,11 @@ def update_output_grafico_dia(dados):
 
     dff = gpd.GeoDataFrame.from_features(data_json)
 
+    dff = group_by_time(periodo=value, df=dff, dtc_column_name='data_portaria', list_columns_sum='area_ha_concedida_geom')
+    
     data_day = go.Bar(
         x=dff.data_portaria,
-        y=dff['area_ha_concedida'],
+        y=dff['area_ha_concedida_geom'],
         customdata=np.stack(dff['numero_processo'], axis=-1),
     )
     layout = go.Layout(
