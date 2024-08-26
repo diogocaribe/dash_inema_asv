@@ -35,7 +35,7 @@ graphs = html.Div(
                 dcc.Dropdown(
                     ['Dia', 'Mês', 'Ano'],
                     placeholder='Selecione',
-                    id='dropdown-municipio',
+                    id='dropdown-tempo',
                     value='Mês',
                     style={
                         'width': '161.23px',
@@ -57,7 +57,7 @@ graphs = html.Div(
 @callback(
     Output('grafico-dia', 'figure'),
     Input('seia-asv', 'data'),
-    Input('dropdown-municipio', 'value')
+    Input('dropdown-tempo', 'value')
 )
 def update_output_grafico_dia(dados, value):
     '''
@@ -68,12 +68,18 @@ def update_output_grafico_dia(dados, value):
     dff = gpd.GeoDataFrame.from_features(data_json)
 
     dff = group_by_time(periodo=value, df=dff, dtc_column_name='data_portaria', list_columns_sum='area_ha_concedida_geom')
-    
-    data_day = go.Bar(
-        x=dff.data_portaria,
-        y=dff['area_ha_concedida_geom'],
-        customdata=np.stack(dff['numero_processo'], axis=-1),
-    )
+
+    if value == 'Dia':
+        data_day = go.Bar(
+            x=dff.data_portaria,
+            y=dff['area_ha_concedida_geom'],
+            customdata=np.stack(dff['numero_processo'], axis=-1),
+        )
+    else:
+        data_day = go.Bar(
+            x=dff.index,
+            y=dff['area_ha_concedida_geom'],
+        )
     layout = go.Layout(
         title='<b>ASV</b>',
         xaxis={'title': 'Data'},
@@ -83,28 +89,6 @@ def update_output_grafico_dia(dados, value):
     grafico_dia = go.Figure(data=data_day, layout=layout)
 
     grafico_dia.update_layout(template=template_graph)
-    grafico_dia.update_layout(
-        xaxis=dict(
-            rangeselector=dict(
-                buttons=list([
-                    dict(count=1,
-                        label='1m',
-                        step='month',
-                        stepmode='backward'),
-                    dict(count=6,
-                        label='6m',
-                        step='month',
-                        stepmode='backward'),
-                    dict(count=1,
-                        label='YTD',
-                        step='year',
-                        stepmode='todate'),
-                    dict(step='all')
-                ])
-            ),
-            type='date'
-        )
-    )
     grafico_dia.update_yaxes(fixedrange=False)
     grafico_dia.update_traces(
         hovertemplate='''Número do processo: %{customdata}<br>Data: %{x}<br>Área concedida (ha): %{value:.2f}<extra></extra>'''

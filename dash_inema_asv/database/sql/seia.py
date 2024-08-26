@@ -1,5 +1,5 @@
 # TODO Verificar se precisaremos adicionar o status do ato na consulta (deferido e transferido)
-seia_sql_geom = '''SELECT (select unnest(array_agg(gid)) as id_array2 order by id_array2 limit 1) AS gid
+seia_sql_geom = """SELECT (select unnest(array_agg(gid)) as id_array2 order by id_array2 limit 1) AS gid
 	, area_ha_concedida
 	, ROUND(sum(area_ha_concedida_geom)::NUMERIC, 4) area_ha_concedida_geom
 	, ROUND(sum(area_ha_concedida_geom)::NUMERIC, 4) - area_ha_concedida AS diff
@@ -36,4 +36,4 @@ FROM (
 	-- Removendo as duplicatas de registro quando o gid e a área concedidada são iguais
 	GROUP BY lg.ide_localizacao_geografica, pac.val_atividade, sc.srid, aa.nom_ato_ambiental, p.num_processo, p2.num_portaria, p2.dtc_portaria, dg.the_geom
 ) t
-GROUP BY area_ha_concedida, nome_ato_ambiental, numero_processo, numero_portaria, data_portaria;'''
+GROUP BY area_ha_concedida, nome_ato_ambiental, numero_processo, numero_portaria, data_portaria;"""

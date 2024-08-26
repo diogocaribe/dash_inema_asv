@@ -33,24 +33,26 @@ def group_by_time(periodo: str, df, dtc_column_name: str, list_columns_sum: str)
     Returns:
         _type_: Dataframe do agrupamento
     """
-    col = dtc_column_name
-
-    list_columns = dtc_column_name, list_columns_sum
 
     dff = df.copy()
-    
+
     if periodo == "Dia":
         return df
     if periodo == "Mês":
-        dff = dff.loc[:,[dtc_column_name, list_columns_sum]]
-        dff['data_portaria'] = pd.to_datetime(dff['data_portaria'])
-        df['data_portaria'] = pd.to_datetime(df['data_portaria']).apply(lambda x: '{year}-{month}'.format(year=x.year, month=x.month))
-        group = df.groupby('data_portaria')['area_ha_concedida_geom'].sum()
-        from pandas import DataFrame
-        group = DataFrame(group)
-        print(group)
+        dff = dff.loc[:, [dtc_column_name, list_columns_sum]]
+        dff["data_portaria"] = pd.to_datetime(dff["data_portaria"])
+        df["data_portaria"] = pd.to_datetime(df["data_portaria"]).apply(
+            lambda x: "{year}-{month}".format(year=x.year, month=x.month)
+        )
+        group = df.groupby("data_portaria")["area_ha_concedida_geom"].sum()
+        group = pd.DataFrame(group)
         return group
     if periodo == "Ano":
-        dff = dff[list_columns]
-        group = dff.groupby(dff[col].dt.year)[list_columns].sum()
+        dff = dff.loc[:, [dtc_column_name, list_columns_sum]]
+        dff["data_portaria"] = pd.to_datetime(dff["data_portaria"])
+        df["data_portaria"] = pd.to_datetime(df["data_portaria"]).apply(
+            lambda x: "{year}".format(year=x.year)
+        )
+        group = df.groupby("data_portaria")["area_ha_concedida_geom"].sum()
+        group = pd.DataFrame(group)
         return group

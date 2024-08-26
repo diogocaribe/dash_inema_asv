@@ -1,4 +1,4 @@
-'''Controllers'''
+"""Controllers"""
 
 from dash import html
 import dash_mantine_components as dmc
@@ -9,25 +9,26 @@ date_range_picker = html.Div(
     [
         html.Div(
             [
-                html.P('Data', style={'margin': '0', 'color': '#FFFFFF'}),
+                html.P("Data", style={"margin": "0", "color": "#FFFFFF"}),
                 dmc.DateRangePicker(
-                    id='date-picker-range',
+                    id="date-picker-range",
                     minDate=min_date,
                     maxDate=max_date,
                     value=[year_start, max_date],
-                    inputFormat='DD/MM/YYYY',
-                    zIndex=10000),
+                    inputFormat="DD/MM/YYYY",
+                    zIndex=10000,
+                ),
             ],
-            style={'width': '240.72px', 'height': '52px'},
+            style={"width": "240.72px", "height": "52px"},
         ),
     ],
-    id='controller_filter_datarange',
+    id="controller_filter_datarange",
     style={
-        'width': '1440px',
-        'height': '84px',
-        'background': '#1F2D4D',
-        'display': 'flex',
-        'justifyContent': 'center',
-        'alignItems': 'center',
+        "width": "1440px",
+        "height": "84px",
+        "background": "#1F2D4D",
+        "display": "flex",
+        "justifyContent": "center",
+        "alignItems": "center",
     },
 )
