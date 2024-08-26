@@ -27,22 +27,44 @@ template_graph = {
         },
         "separators": ".",
         "showlegend": False,
+        "plot_bgcolor": "white",  # Área do fundo do gráfico
+        "yaxis": {
+            "automargin": True,
+            "gridcolor": "#C4C4C4",  # Cor da linha
+            "linecolor": "black",  # Cor do eixo y e x
+            "title": {"standoff": 15},
+        },
+        'font': {'family': 'Roboto',
+                 'weight': 400,
+                 'size': 12,
+                 'color': '#969BAB'} 
     }
 }
 
 graphs = html.Div(
     [
-        dcc.Dropdown(
-            ["Dia", "Mês", "Ano"],
-            placeholder="Selecione",
-            id="dropdown-tempo",
-            value="Dia",
+        html.Div(
+            [
+                html.P("Autorização Supressão Vegetação", className="titulo-box"),
+                dcc.Dropdown(
+                    ["Dia", "Mês", "Ano"],
+                    placeholder="Selecione",
+                    id="dropdown-tempo",
+                    value="Dia",
+                    style={
+                        "width": "161.23px",
+                        "height": "32px",
+                        "backgroundColor": "white",
+                        "borderRadius": "3px",
+                        "border": "0.5px solid #C7C6C63",
+                    },
+                ),
+            ],
             style={
-                "width": "161.23px",
-                "height": "32px",
-                "backgroundColor": "#C7C6C6",
-                "borderRadius": "3px",
-                "border": "0.5px solid #C7C6C63",
+                "display": "flex",
+                "align-items": "center",
+                "justify-content": "space-between",
+                "height": "42px"
             },
         ),
         dcc.Graph(
@@ -50,7 +72,7 @@ graphs = html.Div(
             config={"displaylogo": False, "scrollZoom": False},
         ),
     ],
-    className="div-box",
+    className="div-box-graph",
 )
 
 
@@ -81,14 +103,16 @@ def update_output_grafico_dia(dados, value):
             x=dff.data_portaria,
             y=dff["area_ha_concedida_geom"],
             customdata=np.stack(dff["numero_processo"], axis=-1),
+            marker=dict(color='#3D5AFF'),
         )
     else:
         data_day = go.Bar(
             x=dff.index,
             y=dff["area_ha_concedida_geom"],
+            marker=dict(color='#3D5AFF'),
         )
+
     layout = go.Layout(
-        title="<b>ASV</b>",
         xaxis={"title": "Data"},
         yaxis={"title": "Área (ha)"},
     )
@@ -98,7 +122,7 @@ def update_output_grafico_dia(dados, value):
     grafico_dia.update_layout(template=template_graph)
     grafico_dia.update_yaxes(fixedrange=False)
     grafico_dia.update_traces(
-        hovertemplate="""Número do processo: %{customdata}<br>Data: %{x}<br>Área concedida (ha): %{value:.2f}<extra></extra>"""
+        hovertemplate="""Data: %{x}<br>Área concedida (ha): %{value:.2f}<extra></extra>"""
     )
 
     return grafico_dia

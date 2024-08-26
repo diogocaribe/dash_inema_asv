@@ -30,9 +30,13 @@
     padding: 16px 16px 16px 22px;    
 }
 
-.table {
-    margin: 0px 0px 0px 0px;    
+.div-box-graph {
+    border-radius: 4px;
+    border: 1px solid #DFDFDF;
+    background-color: #ffffff;
+    padding: 16px 16px 16px 22px;    
 }
+
 
 /* Configuração das fontes dos graficos, mapas, tabelas */
 .titulo-box {
