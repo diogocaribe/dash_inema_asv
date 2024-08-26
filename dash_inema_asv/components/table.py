@@ -1,21 +1,50 @@
-from dash import html, dash_table
-from pandas import DataFrame
+import json
+from dash import html, dash_table, dcc, html, Input, Output, callback
+import geopandas as gpd
 
 
-def box_indicador_geral(df: DataFrame):
-    """Função para gerar tabela a partir de um pandas Dataframe
+table_div = html.Div(
+    [
+        html.P("Processos Autorização de Supressão Vegetação", className="titulo-box"),
+        html.Div(id="tabela-processo"),
+    ],
+    className="div-box-table",
+)
+
+
+@callback(
+    Output("tabela-processo", "children"),
+    Input("seia-asv", "data"),
+)
+def update_tabela(dados):
+    """_summary_
 
     Args:
-        df (DataFrame): Dataframe para criação da tabela
+        dados (_type_): _description_
 
     Returns:
-        _type_: Tabela para o layout
+        _type_: _description_
     """
+    data_json = json.loads(dados)
 
-    box = html.Div(
+    df = gpd.GeoDataFrame.from_features(data_json)
+    df = df.loc[
+        :,
         [
-            html.P("Processos Asv", className="titulo-box"),
-            dash_table.DataTable(
+            "data_portaria",
+            "numero_portaria",
+            "numero_processo",
+            "area_ha_concedida_geom",
+        ],
+    ]
+    df.rename(columns={
+            "data_portaria": 'Data Portaria',
+            "numero_portaria": 'Nº Portaria',
+            "numero_processo": 'Nº Processo',
+            "area_ha_concedida_geom": 'Área (ha)'}, inplace=True
+        )
+
+    tabela = dash_table.DataTable(
                 data=df.to_dict("records"),
                 columns=[{"id": c, "name": c} for c in df.columns],
                 # Sort
@@ -50,9 +79,5 @@ def box_indicador_geral(df: DataFrame):
                     "line-height": "13.5px",
                     "letter-spacing": "0.005em",
                 },
-            ),
-        ],
-        className="div-table",
-    )
-
-    return box
+        )
+    return tabela

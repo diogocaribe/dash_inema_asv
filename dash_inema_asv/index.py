@@ -16,6 +16,7 @@ from components import (
     controller_filter,
     controller_datapicker,
     indicador_geral,
+    table
 )
 from dataset.data import seia_asv
 from utils import filtrando_dataframe
@@ -28,6 +29,7 @@ app.layout = [
         [
             dcc.Store(id="seia-asv"),
             dbc.Row([header.header]),
+            # Filtro
             dbc.Row(
                 [
                     html.Div(
@@ -39,32 +41,35 @@ app.layout = [
                     )
                 ]
             ),
+            # Indicadores
             dbc.Row(
                 [
                     dbc.Col(
                         [indicador_geral.indicador_geral_],
                         style={
-                            "display": "flex",
-                            "flex-direction": "column",
-                            "align-items": "center",
-                            "justify-content": "center",
+                            # "display": "flex",
+                            # "flex-direction": "column",
+                            # "align-items": "center",
+                            # "justify-content": "center",
+                            # "with": '910px'
                         },
                     ),
                     dbc.Col(
                         [map_.map_],
                         style={
-                            "display": "flex",
-                            "flex-direction": "column",
-                            "align-items": "center",
-                            "justify-content": "center",
+                            # "display": "flex",
+                            # "flex-direction": "column",
+                            # "align-items": "center",
+                            # "justify-content": "center",
+                            # 'flex': '1'
                         },
                     ),
                 ],
-                className="g-1",
+                # className="g-1",
             ),
             dbc.Row(
                 [
-                    dbc.Col([graph.graphs]),
+                    dbc.Col([table.table_div, graph.graphs]),
                 ]
             ),
             # dbc.Row([footer.footer]),
