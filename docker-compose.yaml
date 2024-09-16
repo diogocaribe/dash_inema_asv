@@ -1,0 +1,24 @@
+version: '3.8'  # ou a versão que preferir
+
+services:
+  web:
+    build:
+      context: .  # Diretório onde o Dockerfile está localizado
+      dockerfile: Dockerfile
+    container_name: ${COMPOSE_PROJECT_NAME}
+    hostname: ${COMPOSE_PROJECT_NAME}
+    restart: always
+    ports:
+      - "8050:8050"  # Mapeia a porta 8050 do contêiner para a porta 8050 do host
+    environment:
+      - POETRY_VIRTUALENVS_CREATE=false  # Opcional: se você não quiser que o Poetry crie ambientes virtuais isolados
+    volumes:
+      - .:/dash_inema_asv  # Mapeia o diretório do projeto no host para o contêiner (opcional, útil para desenvolvimento)
+    command: ["poetry", "run", "gunicorn", "--workers=2", "--threads=4", "-b 0.0.0.0:8050", "-t 6000", "dash_inema_asv.index:server"]
+
+    networks:
+      - network 
+
+networks:
+  network:
+    driver: bridge

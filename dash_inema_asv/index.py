@@ -6,10 +6,10 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 import pandas as pd
 
-from app import app
+from .app import app
 
 
-from components import (
+from .components import (
     header,
     map_,
     graph,
@@ -18,8 +18,8 @@ from components import (
     indicador_geral,
     table
 )
-from dataset.data import seia_asv
-from utils import filtrando_dataframe
+from dash_inema_asv.dataset.data import seia_asv
+from .utils import filtrando_dataframe
 
 server = app.server
 
@@ -78,7 +78,7 @@ app.layout = [
         ],
         class_name="overflow-hidden",
         fluid=True,
-        style={"width": "1440px", "height": "2115px"},
+        # style={"width": "100vw", "height": "300vh"},
     )
 ]
 
@@ -105,4 +105,4 @@ def filter_seia_asv_geom(dates):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server()

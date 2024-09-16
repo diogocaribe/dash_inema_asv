@@ -1,4 +1,4 @@
-from database.repository.seia_repository import SeiaAsvRepository
+from dash_inema_asv.database.repository.seia_repository import SeiaAsvRepository
 from datetime import date
 import pandas as pd
 

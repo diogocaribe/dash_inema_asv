@@ -10,7 +10,7 @@ import geopandas as gpd
 
 import pandas as pd
 
-from utils import group_by_time
+from ..utils import group_by_time
 
 template_graph = {
     "layout": {

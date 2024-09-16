@@ -21,6 +21,15 @@ cd dash_inema_asv
 python index.py
 ```
 
+### Para rodar a aplicação com o Dockercompose
+
+```dash
+docker compose up -d --remove-orphans
+
+docker-compose down --remove-orphans
+
+```
+
 # Perguntas para responder:
 
 ## Quantidade de asv concedida calculado pelo polígono gravado no SEIA no tempo?

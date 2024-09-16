@@ -1,7 +1,7 @@
-from database.configs.connection import DBConnectionHandler
+from dash_inema_asv.database.configs.connection import DBConnectionHandler
 import geopandas as gpd
 import pandas as pd
-from database.sql.seia import seia_sql_geom
+from dash_inema_asv.database.sql.seia import seia_sql_geom
 
 
 class SeiaAsvRepository:
