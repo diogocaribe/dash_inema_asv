@@ -6,7 +6,6 @@ services:
       context: .  # Diretório onde o Dockerfile está localizado
       dockerfile: Dockerfile
     container_name: ${COMPOSE_PROJECT_NAME}
-    hostname: ${COMPOSE_PROJECT_NAME}
     restart: always
     ports:
       - "8050:8050"  # Mapeia a porta 8050 do contêiner para a porta 8050 do host
