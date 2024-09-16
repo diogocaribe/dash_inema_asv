@@ -122,15 +122,21 @@ def update_output_grafico_dia(dados, value):
 
     grafico_dia.update_layout(template=template_graph)
     grafico_dia.update_yaxes(fixedrange=False)
-    grafico_dia.update_traces(
-        texttemplate="%{value}",  # Exibe o valor da barra com 2 casas decimais
-        textposition='outside',    # Posiciona os valores no topo das barras
-        textfont=dict(
-            family="Roboto",        # Define a fonte
-            size=11,               # Tamanho da fonte
-            color="#212227"          # Cor da fonte
-        ),
-        hovertemplate="""Data: %{x}<br>Área concedida (ha): %{value:.2f}<extra></extra>"""
-    )
+
+    if value == "Dia":
+        grafico_dia.update_traces(
+            hovertemplate="""Data: %{x}<br>Área concedida (ha): %{value:.2f}<extra></extra>"""
+        )
+    else:
+        grafico_dia.update_traces(
+            texttemplate="%{value}",
+            textposition='outside', # Posiciona os valores no topo das barras
+            textfont=dict(
+                family="Roboto",
+                size=11,
+                color="#212227"
+            ),
+            hovertemplate="""Data: %{x}<br>Área concedida (ha): %{value:.2f}<extra></extra>"""
+        )
 
     return grafico_dia
