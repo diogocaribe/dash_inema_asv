@@ -19,7 +19,6 @@ header = html.Header(
         ),
     ],
     style={
-        "width": "1440px",
         "height": "42px",
         "background": "#3C71DD",
         "display": "flex",

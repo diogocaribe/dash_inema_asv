@@ -64,12 +64,13 @@ def update_tabela(dados):
                     "border-radius": "4px 4px 0px 0px",
                 },  # Borda ao redor da tabela
                 style_header={
+                    # 'display': 'flex',
+                    # 'justify-content': 'space-between',
                     "backgroundColor": "#F4F4F6",
                     "height": "37px",
                     "whiteSpace": "normal",
                     "position": "sticky",  # Fixa o cabeçalho
                     "top": "0",  # Define a posição do cabeçalho no topo
-                    "zIndex": "1",
                 },
                 style_cell={
                     "textAlign": "center",

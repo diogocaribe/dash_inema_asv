@@ -61,9 +61,9 @@ indicador_geral_ = html.Div(
 @callback(
     Output("qtd-processo", "children"),
     Input("seia-asv", "data"),
-    Input("demo-dropdown", "value"),
+    # Input("demo-dropdown", "value"),
 )
-def quantidade_processo(dados, value):
+def quantidade_processo(dados):
     data_json = json.loads(dados)
 
     dff = gpd.GeoDataFrame.from_features(data_json)
@@ -75,9 +75,9 @@ def quantidade_processo(dados, value):
 @callback(
     Output("qtd-area-concedida-geom", "children"),
     Input("seia-asv", "data"),
-    Input("demo-dropdown", "value"),
+    # Input("demo-dropdown", "value"),
 )
-def quantidade_area_concedidada_geom(dados, value):
+def quantidade_area_concedidada_geom(dados):
     data_json = json.loads(dados)
 
     dff = gpd.GeoDataFrame.from_features(data_json)

@@ -16,7 +16,10 @@ date_range_picker = html.Div(
                     maxDate=max_date,
                     value=[year_start, max_date],
                     inputFormat="DD/MM/YYYY",
-                    zIndex=10000,
+                    zIndex=1000,
+                    style={
+                        "background-color": '#C7C6C6',
+                    }
                 ),
             ],
             style={"width": "240.72px", "height": "52px"},
@@ -24,7 +27,7 @@ date_range_picker = html.Div(
     ],
     id="controller_filter_datarange",
     style={
-        "width": "1440px",
+        "width": "100%",
         "height": "84px",
         "background": "#1F2D4D",
         "display": "flex",

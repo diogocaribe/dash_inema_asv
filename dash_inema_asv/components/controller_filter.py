@@ -34,6 +34,6 @@ controller_filter = html.Div(
 )
 
 
-@callback(Output("dd-output-container", "children"), Input("demo-dropdown", "value"))
-def update_output(value):
-    return f"You have selected {value}"
+# @callback(Output("dd-output-container", "children"), Input("demo-dropdown", "value"))
+# def update_output(value):
+#     return f"You have selected {value}"

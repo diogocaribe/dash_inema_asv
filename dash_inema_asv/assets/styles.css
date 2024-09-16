@@ -101,3 +101,13 @@
     background-color: #ffffff;
     margin: 0px;  
 }
+
+/* Definindo a cor do datapicker */
+.mantine-5v12bf {
+    background-color: #C7C6C6;
+}
+
+/* Modificando a posição da seta do cabeçalho da tabela */
+.column-actions {
+    order: 1;
+}

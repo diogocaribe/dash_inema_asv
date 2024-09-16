@@ -34,7 +34,7 @@ app.layout = [
                 [
                     html.Div(
                         [
-                            controller_filter.controller_filter,
+                            # controller_filter.controller_filter,
                             controller_datapicker.date_range_picker,
                         ],
                         style={"padding": "0px", "display": "flex"},
@@ -69,11 +69,11 @@ app.layout = [
             ),
             dbc.Row(
                 [
-                    dbc.Col([table.table_div, graph.graphs]),
+                    dbc.Col([graph.graphs, table.table_div]),
                 ]
             ),
             # dbc.Row([footer.footer]),
-            html.Div(id="dd-output-container"),
+            # html.Div(id="dd-output-container"),
             html.Div(id="output-container-date-picker-range"),
         ],
         class_name="overflow-hidden",
@@ -105,4 +105,4 @@ def filter_seia_asv_geom(dates):
 
 
 if __name__ == "__main__":
-    app.run_server()
+    app.run_server(debug=True, port=8051)
