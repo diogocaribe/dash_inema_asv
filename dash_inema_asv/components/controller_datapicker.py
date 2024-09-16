@@ -12,17 +12,15 @@ date_range_picker = html.Div(
                 html.P("Data", style={"margin": "0", "color": "#FFFFFF"}),
                 dmc.DateRangePicker(
                     id="date-picker-range",
+                    clearable=False,
                     minDate=min_date,
                     maxDate=max_date,
                     value=[year_start, max_date],
                     inputFormat="DD/MM/YYYY",
-                    zIndex=1000,
-                    style={
-                        "background-color": '#C7C6C6',
-                    }
+                    zIndex=10000,
                 ),
             ],
-            style={"width": "240.72px", "height": "52px"},
+            style={"width": "200px", "height": "52px"},
         ),
     ],
     id="controller_filter_datarange",

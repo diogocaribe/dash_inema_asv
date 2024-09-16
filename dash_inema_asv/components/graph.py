@@ -49,6 +49,7 @@ graphs = html.Div(
                 dcc.Dropdown(
                     ["Dia", "Mês", "Ano"],
                     placeholder="Selecione",
+                    clearable=False,
                     id="dropdown-tempo",
                     value="Dia",
                     style={
