@@ -1,22 +1,23 @@
 # TODO Verificar se precisaremos adicionar o status do ato na consulta (deferido e transferido)
 seia_sql_geom = """SELECT (select unnest(array_agg(gid)) as id_array2 order by id_array2 limit 1) AS gid
-	, area_ha_concedida
+	, sum(area_ha_concedida) AS area_concedida
 	, ROUND(sum(area_ha_concedida_geom)::NUMERIC, 4) area_ha_concedida_geom
-	, ROUND(sum(area_ha_concedida_geom)::NUMERIC, 4) - area_ha_concedida AS diff
+	-- Essa coluna de diferença vai sair da consulta. Só foi utilizada para avaliar o ruído
+--	, ROUND(sum(area_ha_concedida_geom)::NUMERIC, 4) - area_ha_concedida AS diff
 	, nome_ato_ambiental
 	, numero_processo
 	, numero_portaria
 	, data_portaria
 	, st_union(geom) AS geom
 FROM (
-	SELECT lg.ide_localizacao_geografica AS gid
+	SELECT lg.ide_localizacao_geografica  AS gid
 			,  pac.val_atividade AS area_ha_concedida -- Para o caso da ASV
 			, CASE 
-				WHEN sc.srid IN ('31983') THEN st_area(st_transform(dg.the_geom,31983))/10000
-				WHEN sc.srid IN ('31984') THEN st_area(st_transform(dg.the_geom,31984))/10000
-				WHEN sc.srid IN ('29193') THEN st_area(st_transform(dg.the_geom,29193))/10000
-				WHEN sc.srid IN ('29194') THEN st_area(st_transform(dg.the_geom,29194))/10000
-				ELSE st_area(st_transform(dg.the_geom, 31983))/10000 -- Conversao considerando menor desvio para UTM 23S (Foco: Cerrado)
+				WHEN sc.srid IN ('31983') THEN round((st_area(st_transform(dg.the_geom,31983))/10000)::NUMERIC, 2)
+				WHEN sc.srid IN ('31984') THEN round((st_area(st_transform(dg.the_geom,31984))/10000)::NUMERIC, 2)
+				WHEN sc.srid IN ('29193') THEN round((st_area(st_transform(dg.the_geom,29193))/10000)::NUMERIC, 2)
+				WHEN sc.srid IN ('29194') THEN round((st_area(st_transform(dg.the_geom,29194))/10000)::NUMERIC, 2)
+				ELSE round((st_area(st_transform(dg.the_geom, 31983))/10000)::NUMERIC, 2) -- Conversao considerando menor desvio para UTM 23S (Foco: Cerrado)
 			  END AS area_ha_concedida_geom
 			, aa.nom_ato_ambiental AS nome_ato_ambiental
 			, p.num_processo AS numero_processo
@@ -36,4 +37,4 @@ FROM (
 	-- Removendo as duplicatas de registro quando o gid e a área concedidada são iguais
 	GROUP BY lg.ide_localizacao_geografica, pac.val_atividade, sc.srid, aa.nom_ato_ambiental, p.num_processo, p2.num_portaria, p2.dtc_portaria, dg.the_geom
 ) t
-GROUP BY area_ha_concedida, nome_ato_ambiental, numero_processo, numero_portaria, data_portaria;"""
+GROUP BY nome_ato_ambiental, numero_processo, numero_portaria, data_portaria;"""
