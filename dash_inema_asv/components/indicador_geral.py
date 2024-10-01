@@ -52,7 +52,7 @@ indicador_geral_ = html.Div(
     className="div-box",
     style={
         "width": "100%",
-        "height": "248px",
+        "height": "23vh",
         "padding": "2% 2% 2% 2%",
         "margin": "0.5%",
     },
