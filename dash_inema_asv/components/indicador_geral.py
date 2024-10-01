@@ -54,6 +54,7 @@ indicador_geral_ = html.Div(
         "width": "100%",
         "height": "248px",
         "padding": "2% 2% 2% 2%",
+        "margin": "0.5%"
     },
 )
 

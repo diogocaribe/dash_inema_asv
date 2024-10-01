@@ -45,11 +45,11 @@ app.layout = [
                     dbc.Col(
                         [indicador_geral.indicador_geral_, map_.map_],
                         width=4,
-                        style={"padding": "1% 0.5% 1% 1%"}
+                        style={"padding": "0.8%"}
                     ),
                     dbc.Col(
                         [graph.graphs, table.table_div],
-                        style={"padding": "1% 1% 1% 0.5%"}
+                        style={"padding": "0.8%"}
                     ),
                 ],
             ),
