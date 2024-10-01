@@ -2,7 +2,7 @@
 
 from dash import html
 import dash_mantine_components as dmc
-from ..dataset.data import max_date, min_date, year_start, min_date_90_dias
+from ..dataset.data import max_date, min_date, min_date_90_dias
 
 
 date_range_picker = html.Div(
@@ -27,9 +27,9 @@ date_range_picker = html.Div(
     style={
         "width": "100%",
         "height": "84px",
-        "background": "#1F2D4D",
+        # "background": "#1F2D4D",
         "display": "flex",
-        "justifyContent": "center",
+        "justifyContent": "flex-start",
         "alignItems": "center",
     },
 )

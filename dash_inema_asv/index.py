@@ -5,15 +5,14 @@ import dash_bootstrap_components as dbc
 
 from .app import app
 
-
 from .components import (
     header,
     map_,
     graph,
-    controller_filter,
     controller_datapicker,
     indicador_geral,
     table,
+    footer
 )
 from dash_inema_asv.dataset.data import seia_asv
 from .utils import filtrando_dataframe
@@ -32,12 +31,11 @@ app.layout = [
                 [
                     html.Div(
                         [
-                            # controller_filter.controller_filter,
                             controller_datapicker.date_range_picker,
                         ],
-                        style={"padding": "0px", "display": "flex"},
+                        # style={"padding": "0px"},
                     )
-                ]
+                ], style={'padding': '0.1%', "background": "#1F2D4D",}
             ),
             # Indicadores e Paineis
             dbc.Row(
@@ -47,10 +45,13 @@ app.layout = [
                         width=4,
                         style={"padding": "0.5%"},
                     ),
-                    dbc.Col([graph.graphs, table.table_div], style={"padding": "0.5%"}),
+                    dbc.Col(
+                        [graph.graphs, table.table_div], 
+                        width=8,
+                        style={"padding": "0.5%"}),
                 ],
             ),
-            # dbc.Row([footer.footer]),
+            dbc.Row([footer.footer]),
             # html.Div(id="dd-output-container"),
             html.Div(id="output-container-date-picker-range"),
         ],
