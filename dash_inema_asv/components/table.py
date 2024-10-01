@@ -56,7 +56,7 @@ def update_tabela(dados):
                 style_as_list_view=True,  # Linhas entre as celulas (sem linhas nas colunas)
                 style_data={
                     "border": "1px solid #DFDFDF",
-                    "height": "15px",
+                    "height": "1rem",
                 },  # Estinho da linha entre as celulas
                 style_table={
                     "border": "1px solid #DFDFDF",
