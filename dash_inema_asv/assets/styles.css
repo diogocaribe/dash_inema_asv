@@ -41,7 +41,7 @@
 /* Configuração das fontes dos graficos, mapas, tabelas */
 .titulo-box {
     font-family: Roboto;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
     text-align: left;
     color: #212227;
@@ -63,10 +63,10 @@
 }
 
 .titulo-indicador {
-    font-size: 12px;
+    font-size: 1rem;
     font-weight: 500;
     font-family: Roboto;
-    line-height: 13.5px;
+    line-height: 1rem;
     letter-spacing: 0.005em;
     color: #3D5AFF;
     padding-top: 16px;
@@ -74,7 +74,7 @@
 
 .conteudo-indicador {
     font-family: Roboto;
-    font-size: 36px;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: 0.005em;
     text-align: center;
@@ -84,7 +84,7 @@
 
 .conteudo-indicador_segundo {
     font-family: Roboto;
-    font-size: 36px;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: 0.005em;
     text-align: center;
