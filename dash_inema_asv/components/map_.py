@@ -1,6 +1,6 @@
 import dash_bootstrap_components as dbc
 import dash_leaflet as dl
-from dash import Input, Output, callback, dcc, html
+from dash import Input, Output, callback, html
 import json
 
 
@@ -9,7 +9,7 @@ map_ = html.Div(
         html.P(
             "Mapa de Monitoramento",
             className="titulo-box",
-            style={"padding-bottom": "16px"},
+            style={"padding-bottom": "1.5%"},
         ),
         dl.Map(
             [dl.TileLayer(), dl.GeoJSON(id="geojson-mapa")],
@@ -19,17 +19,17 @@ map_ = html.Div(
             maxBounds=[[-8.5272, -46.6294], [-18.3484, -37.3338]],
             id="leaflet-map",
             style={
-                "width": "485.72px",
-                "height": "502.92px",
+                "width": "100%",
+                "height": "95.5%",
             },
         ),
     ],
     className="div-map",
     style={
-        "width": "517.72px",
-        "height": "575.92px",
-        "padding": "16px 16px 0px 16px",
-        "margin": "16px",
+        "width": "97%",
+        "height": "61vh",
+        "padding": "3% 3% 3% 3%",
+        "margin": "1.5%",
     },
 )
 
