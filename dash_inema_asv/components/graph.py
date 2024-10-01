@@ -34,10 +34,7 @@ template_graph = {
             "linecolor": "black",  # Cor do eixo y e x
             "title": {"standoff": 15},
         },
-        'font': {'family': 'Roboto',
-                 'weight': 400,
-                 'size': 12,
-                 'color': '#969BAB'} 
+        "font": {"family": "Roboto", "weight": 400, "size": 12, "color": "#969BAB"},
     }
 }
 
@@ -65,7 +62,7 @@ graphs = html.Div(
                 "display": "flex",
                 "align-items": "center",
                 "justify-content": "space-between",
-                "height": "42px"
+                "height": "42px",
             },
         ),
         dcc.Graph(
@@ -104,13 +101,13 @@ def update_output_grafico_dia(dados, value):
             x=dff.data_portaria,
             y=dff["area_ha_concedida_geom"],
             customdata=np.stack(dff["numero_processo"], axis=-1),
-            marker=dict(color='#3D5AFF'),
+            marker=dict(color="#3D5AFF"),
         )
     else:
         data_day = go.Bar(
             x=dff.index,
             y=dff["area_ha_concedida_geom"],
-            marker=dict(color='#3D5AFF'),
+            marker=dict(color="#3D5AFF"),
         )
 
     layout = go.Layout(
@@ -130,13 +127,9 @@ def update_output_grafico_dia(dados, value):
     else:
         grafico_dia.update_traces(
             texttemplate="%{value}",
-            textposition='outside', # Posiciona os valores no topo das barras
-            textfont=dict(
-                family="Roboto",
-                size=11,
-                color="#212227"
-            ),
-            hovertemplate="""Data: %{x}<br>Área concedida (ha): %{value:.2f}<extra></extra>"""
+            textposition="outside",  # Posiciona os valores no topo das barras
+            textfont=dict(family="Roboto", size=11, color="#212227"),
+            hovertemplate="""Data: %{x}<br>Área concedida (ha): %{value:.2f}<extra></extra>""",
         )
 
     return grafico_dia

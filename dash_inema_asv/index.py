@@ -13,7 +13,7 @@ from .components import (
     controller_filter,
     controller_datapicker,
     indicador_geral,
-    table
+    table,
 )
 from dash_inema_asv.dataset.data import seia_asv
 from .utils import filtrando_dataframe
@@ -45,12 +45,9 @@ app.layout = [
                     dbc.Col(
                         [indicador_geral.indicador_geral_, map_.map_],
                         width=4,
-                        style={"padding": "0.8%"}
+                        style={"padding": "0.5%"},
                     ),
-                    dbc.Col(
-                        [graph.graphs, table.table_div],
-                        style={"padding": "0.8%"}
-                    ),
+                    dbc.Col([graph.graphs, table.table_div], style={"padding": "0.5%"}),
                 ],
             ),
             # dbc.Row([footer.footer]),

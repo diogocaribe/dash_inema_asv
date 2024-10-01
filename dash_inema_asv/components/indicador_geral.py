@@ -46,7 +46,7 @@ indicador_geral_ = html.Div(
                     },
                 ),
             ],
-            style={'width': '100%'}            
+            style={"width": "100%"},
         ),
     ],
     className="div-box",
@@ -54,7 +54,7 @@ indicador_geral_ = html.Div(
         "width": "100%",
         "height": "248px",
         "padding": "2% 2% 2% 2%",
-        "margin": "0.5%"
+        "margin": "0.5%",
     },
 )
 
