@@ -12,6 +12,9 @@ seia_asv_sem_gom = pd.DataFrame(seia_asv)
 
 # Datas iniciais e finais do dataframe
 max_date = seia_asv["data_portaria"].max()
+# Calculando a data de início (90 dias antes)
+min_date_90_dias = max_date - pd.Timedelta(days=60)
+
 min_date = seia_asv["data_portaria"].min()
 
 
