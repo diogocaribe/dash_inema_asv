@@ -1,10 +1,7 @@
 """Dashboard InemaS"""
 
-from datetime import datetime
-from dash import html, dcc, callback, Output, Input
+from dash import html, dcc, Output, Input
 import dash_bootstrap_components as dbc
-import plotly.express as px
-import pandas as pd
 
 from .app import app
 
@@ -28,8 +25,9 @@ app.layout = [
     dbc.Container(
         [
             dcc.Store(id="seia-asv"),
+            # Cabeçalho do Painel
             dbc.Row([header.header]),
-            # Filtro
+            # Filtros
             dbc.Row(
                 [
                     html.Div(
@@ -41,36 +39,19 @@ app.layout = [
                     )
                 ]
             ),
-            # Indicadores
+            # Indicadores e Paineis
             dbc.Row(
                 [
                     dbc.Col(
-                        [indicador_geral.indicador_geral_],
-                        style={
-                            # "display": "flex",
-                            # "flex-direction": "column",
-                            # "align-items": "center",
-                            # "justify-content": "center",
-                            # "with": '910px'
-                        },
+                        [indicador_geral.indicador_geral_, map_.map_],
+                        width=4,
+                        style={"padding": "1% 0.5% 1% 1%"}
                     ),
                     dbc.Col(
-                        [map_.map_],
-                        style={
-                            # "display": "flex",
-                            # "flex-direction": "column",
-                            # "align-items": "center",
-                            # "justify-content": "center",
-                            # 'flex': '1'
-                        },
+                        [graph.graphs, table.table_div],
+                        style={"padding": "1% 1% 1% 0.5%"}
                     ),
                 ],
-                # className="g-1",
-            ),
-            dbc.Row(
-                [
-                    dbc.Col([graph.graphs, table.table_div]),
-                ]
             ),
             # dbc.Row([footer.footer]),
             # html.Div(id="dd-output-container"),
@@ -78,7 +59,6 @@ app.layout = [
         ],
         class_name="overflow-hidden",
         fluid=True,
-        # style={"width": "100vw", "height": "300vh"},
     )
 ]
 

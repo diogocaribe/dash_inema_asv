@@ -10,7 +10,7 @@ indicador_geral_ = html.Div(
         html.Div(
             [
                 html.P("Indicadores", className="titulo-indicador"),
-                html.Hr(style={"width": "397px"}),
+                html.Hr(),
                 html.Div(
                     [
                         html.Div(
@@ -28,7 +28,7 @@ indicador_geral_ = html.Div(
                         html.Div(
                             [
                                 html.P(
-                                    "Àrea Suprimida (ha)",
+                                    "Àrea Autorizada (ha)",
                                     className="titulo-conteudo-indicador",
                                 ),
                                 html.P(
@@ -43,17 +43,17 @@ indicador_geral_ = html.Div(
                         "display": "flex",
                         "justifyContent": "space-between",
                         "alignItems": "center",  # Opcional: Alinha verticalmente no centro
-                        "width": "397px",  # Ajusta a largura do container conforme necessário
                     },
                 ),
-            ]
+            ],
+            style={'width': '100%'}            
         ),
     ],
     className="div-box",
     style={
-        "width": "429px",
+        "width": "100%",
         "height": "248px",
-        "padding": "16px 0px 0px 16px",
+        "padding": "2% 2% 2% 2%",
     },
 )
 
