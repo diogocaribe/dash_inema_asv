@@ -35,7 +35,7 @@ app.layout = [
                         ],
                         # style={"padding": "0px"},
                     )
-                ], style={'padding': '0.1%', "background": "#1F2D4D",}
+                ], style={'padding': '0.1%', "background": "#1F2D4D"},
             ),
             # Indicadores e Paineis
             dbc.Row(
@@ -43,12 +43,19 @@ app.layout = [
                     dbc.Col(
                         [indicador_geral.indicador_geral_, map_.map_],
                         width=4,
-                        style={"padding": "8px"},
+                        style={"padding": "8px",
+                               'display': 'flex',
+                               'flex-direction': 'column',
+                               'box-sizing':'border-box'},
                     ),
                     dbc.Col(
                         [graph.graphs, table.table_div], 
                         width=8,
-                        style={"padding": "8px"}),
+                        style={"padding": "8px",
+                                'display': 'flex',
+                               'flex-direction': 'column',
+                               'box-sizing':'border-box'
+                               }),
                 ],
             ),
             # dbc.Row([footer.footer]),
