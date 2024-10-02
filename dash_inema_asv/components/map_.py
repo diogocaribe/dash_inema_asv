@@ -29,7 +29,7 @@ map_ = html.Div(
         "width": "96.5%",
         "height": "61vh",
         "padding": "3% 3% 3% 3%",
-        "margin": "2%",
+        "margin": "4px 0px 0px 20px",
     },
 )
 

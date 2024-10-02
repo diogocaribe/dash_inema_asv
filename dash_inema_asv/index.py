@@ -43,15 +43,15 @@ app.layout = [
                     dbc.Col(
                         [indicador_geral.indicador_geral_, map_.map_],
                         width=4,
-                        style={"padding": "0.5%"},
+                        style={"padding": "8px"},
                     ),
                     dbc.Col(
                         [graph.graphs, table.table_div], 
                         width=8,
-                        style={"padding": "0.5%"}),
+                        style={"padding": "8px"}),
                 ],
             ),
-            dbc.Row([footer.footer]),
+            # dbc.Row([footer.footer]),
             # html.Div(id="dd-output-container"),
             html.Div(id="output-container-date-picker-range"),
         ],

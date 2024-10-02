@@ -71,6 +71,7 @@ graphs = html.Div(
         ),
     ],
     className="div-box-graph",
+    style={'margin': '8px'}
 )
 
 
