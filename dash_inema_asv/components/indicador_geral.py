@@ -28,7 +28,7 @@ indicador_geral_ = html.Div(
                         html.Div(
                             [
                                 html.P(
-                                    "Àrea Autorizada (ha)",
+                                    "Área Autorizada (ha)",
                                     className="titulo-conteudo-indicador",
                                 ),
                                 html.P(
