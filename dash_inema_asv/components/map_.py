@@ -27,9 +27,9 @@ map_ = html.Div(
     className="div-map",
     style={
         "width": "100%",
-        "height": "60vh",
+        "height": "100%",
         "padding": "3% 3% 3% 3%",
-        "margin": "auto 0px 0px 8px",
+        "margin": "8px 8px 8px 8px",
     },
 )
 

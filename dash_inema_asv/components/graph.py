@@ -3,12 +3,9 @@
 import json
 from dash import dcc, html, Input, Output, callback
 import numpy as np
-import plotly.express as px
 import plotly.graph_objects as go
 
 import geopandas as gpd
-
-import pandas as pd
 
 from ..utils import group_by_time
 
