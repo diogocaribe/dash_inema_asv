@@ -19,7 +19,7 @@ header = html.Header(
         ),
     ],
     style={
-        "height": "42px",
+        "height": "4vh",
         "background": "#3C71DD",
         "display": "flex",
         "justifyContent": "space-between",
