@@ -26,7 +26,7 @@ date_range_picker = html.Div(
     id="controller_filter_datarange",
     style={
         "width": "100%",
-        "height": "84px",
+        "height": "100%",
         # "background": "#1F2D4D",
         "display": "flex",
         "justifyContent": "flex-start",
