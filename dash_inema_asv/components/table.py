@@ -68,7 +68,7 @@ def update_tabela(dados):
             "border": "1px solid #DFDFDF",
             "overflowY": "auto",
             "border-radius": "4px 4px 0px 0px",
-            "height": "27.4vh", # Tamanho da tabela (número de linhas que aparecem)
+            "height": "28vh", # Tamanho da tabela (número de linhas que aparecem)
         },  # Borda ao redor da tabela
         style_header={
             "backgroundColor": "#F4F4F6",
