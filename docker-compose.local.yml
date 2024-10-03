@@ -10,13 +10,22 @@ services:
     ports:
       - "8050:8050"  # Mapeia a porta 8050 do contêiner para a porta 8050 do host
     environment:
-      - POETRY_VIRTUALENVS_CREATE=false  # Opcional: se você não quiser que o Poetry crie ambientes virtuais isolados
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      VIRTUAL_PORT: ${VIRTUAL_PORT}
+    expose:
+      - ${VIRTUAL_PORT}
     volumes:
       - .:/dash_inema_asv  # Mapeia o diretório do projeto no host para o contêiner (opcional, útil para desenvolvimento)
     command: ["poetry", "run", "gunicorn", "--workers=2", "--threads=4", "-b 0.0.0.0:8050", "-t 6000", "dash_inema_asv.index:server"]
 
     networks:
       - network 
+    deploy:
+      resources:
+        limits:
+          cpus: "${LIMIT_CPU}"
+          memory: "${LIMIT_MEM}"
+
 
 networks:
   network:
