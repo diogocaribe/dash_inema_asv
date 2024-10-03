@@ -23,18 +23,19 @@ app.layout = [
     dbc.Container(
         [
             dcc.Store(id="seia-asv"),
-            # Cabeçalho do Painel
+            # Cabeçalho do Painel (4vh)
             dbc.Row([header.header]),
-            # Filtros
+            # Filtros (8vh)
             dbc.Row(
                 [
                     html.Div(
                         [
                             controller_datapicker.date_range_picker,
                         ],
-                        # style={"padding": "0px"},
                     )
-                ], style={'padding': '0.1%', "background": "#1F2D4D"},
+                ], style={'padding': '0.1%', 
+                          "background": "#1F2D4D",
+                          'height': '8vh'},
             ),
             # Indicadores e Paineis
             dbc.Row(
@@ -56,6 +57,7 @@ app.layout = [
                                'box-sizing':'border-box'
                                }),
                 ],
+                style={'height': '88vh'}
             ),
             # dbc.Row([footer.footer]),
             # html.Div(id="dd-output-container"),
@@ -63,6 +65,8 @@ app.layout = [
         ],
         class_name="overflow-hidden",
         fluid=True,
+        # Div pai que determina o tamanho da página
+        style={'with': '1920', 'heigth': '1080'}
     )
 ]
 
