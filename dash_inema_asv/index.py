@@ -7,12 +7,11 @@ from .app import app
 
 from .components import (
     header,
-    map_,
+    map,
     graph,
     controller_datapicker,
     indicador_geral,
     table,
-    footer
 )
 from dash_inema_asv.dataset.data import seia_asv
 from .utils import filtrando_dataframe
@@ -41,7 +40,7 @@ app.layout = [
             dbc.Row(
                 [
                     dbc.Col(
-                        [indicador_geral.indicador_geral_, map_.map_],
+                        [indicador_geral.indicador_geral_, map.map],
                         width=4,
                         style={"padding": "8px",
                                'display': 'flex',

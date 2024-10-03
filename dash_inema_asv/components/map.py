@@ -1,10 +1,9 @@
-import dash_bootstrap_components as dbc
 import dash_leaflet as dl
 from dash import Input, Output, callback, html
 import json
 
 
-map_ = html.Div(
+map = html.Div(
     [
         html.P(
             "Mapa de Monitoramento",
@@ -14,9 +13,9 @@ map_ = html.Div(
         dl.Map(
             [dl.TileLayer(), dl.GeoJSON(id="geojson-mapa")],
             center=[56, 10],
-            zoom=6,
+            zoom=5,
             preferCanvas=True,
-            maxBounds=[[-8.5272, -46.6294], [-18.3484, -37.3338]],
+            maxBounds=[[-8.4, -46.6], [-18.3, -37.3]],
             id="leaflet-map",
             style={
                 "width": "100%",
@@ -45,8 +44,8 @@ def update_output_mapa(gdf):
     """
     map_geojson = dl.GeoJSON(
         data=json.loads(gdf),
-        zoomToBounds=True,
-        zoomToBoundsOnClick=True,
+        # zoomToBounds=True,
+        # zoomToBoundsOnClick=True,
         options={"style": {"color": "red"}},
     )
 
